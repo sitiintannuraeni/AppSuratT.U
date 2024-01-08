@@ -1,0 +1,263 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700&display=swap');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
+
+// Bootstrap icons
+@import 'bootstrap-icons/font/bootstrap-icons';
+
+body {
+	background-color: #f2f7ff;
+}
+
+a {
+	text-decoration: none;
+}
+
+.card {
+	border: none;
+	
+	.card-header {
+		border: none;
+		padding-bottom: 0;
+	}
+}
+
+.card-header:first-child {
+	border-radius: var(--bs-card-inner-border-radius) var(--bs-card-inner-border-radius) 0 0;
+}
+
+#app {
+	@include media-breakpoint-down(md) {
+		&.overlay {
+			position: relative;
+			height: 100%;
+			width: 100%;
+			transition: 0.5s ease-out;
+			
+			&:before {
+				content: "";
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				z-index: 11;
+				background: #000000;
+				opacity: 0.6;
+			}
+		}
+	}
+}
+
+.dropdown .avatar {
+	margin-right: 0.6rem;
+}
+
+.avatar {
+	display: inline-flex;
+	border-radius: 50%;
+	text-align: center;
+	vertical-align: middle;
+	position: relative;
+}
+
+.navbar .user-menu img {
+	width: 39px;
+	height: 39px;
+	border-radius: 50%;
+}
+
+#sidebar {
+	
+	.sidebar-wrapper {
+		width: 300px;
+		height: 100vh;
+		position: fixed;
+		top: 0;
+		z-index: 12;
+		overflow-y: auto;
+		bottom: 0;
+		transition: left 0.5s ease-out;
+		background-color: #FFFFFF;
+		
+		&.show {
+			left: 0;
+		}
+		
+		@include media-breakpoint-down(md) {
+			left: -300px;
+		}
+		
+		.sidebar-header {
+			height: 70px;
+			font-weight: bold;
+			padding: 0 2.8rem;
+			font-size: 1.2rem;
+			display: flex;
+			align-items: center;
+			position: relative;
+		}
+		
+		.close-menu-mobile {
+			top: 0;
+			right: 0;
+			position: absolute;
+			height: 40px;
+			width: 40px;
+			border-radius: 50%;
+			align-items: center;
+			justify-content: center;
+			display: none;
+			
+			@include media-breakpoint-down(md) {
+				display: flex;
+			}
+		}
+		
+		.sidebar-menu .menu {
+			padding: 0 2rem;
+			font-weight: 600;
+			
+			.sidebar-title {
+				padding: 0 1rem;
+				margin: 1.5rem 0 1rem;
+				font-size: 1rem;
+				list-style: none;
+				font-weight: 600;
+				color: #25396f;
+			}
+			
+			.sidebar-item {
+				list-style: none;
+				margin-top: 0.5rem;
+				position: relative;
+				
+				&.active > .sidebar-link {
+					background-color: $primary;
+				}
+				
+				&.active > .sidebar-link span {
+					color: #fff;
+				}
+				
+				&.active > .sidebar-link i {
+					fill: white;
+					color: white;
+				}
+				
+				&.has-sub .sidebar-link:after {
+					content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9" style="fill:none;stroke:gray;stroke-width:1"></polyline></svg>');
+					position: absolute;
+					color: #ccc;
+					right: 15px;
+					top: 12px;
+					display: block;
+				}
+			}
+			
+			.sidebar-link {
+				padding: 0.7rem 1rem;
+				font-size: 1rem;
+				display: flex;
+				align-items: center;
+				border-radius: 0.5rem;
+				transition: all 0.5s;
+				text-decoration: none;
+				color: #25396f;
+				
+				&:hover {
+					background-color: rgb(240, 241, 245);
+				}
+				
+				span {
+					margin-left: 1rem;
+				}
+			}
+			
+			.submenu {
+				list-style: none;
+				
+				&.active {
+					max-height: 999px;
+					display: block;
+				}
+				
+				.submenu-item a {
+					padding: 0.7rem 1.7rem;
+					display: block;
+					color: #25396f;
+					font-size: 0.85rem;
+					font-weight: 600;
+					letter-spacing: 0.5px;
+					transition: all 0.3s;
+					
+					&:hover {
+						margin-left: 0.3rem;
+						color: $primary;
+					}
+				}
+			}
+		}
+	}
+}
+
+#main {
+	margin-left: 300px;
+	min-height: 100vh;
+	
+	@include media-breakpoint-down(md) {
+		margin-left: 0;
+	}
+	
+	#main-content {
+		padding: 1rem;
+	}
+	
+	&.layout-navbar {
+		padding: 0;
+		transition: margin-left 0.5s ease-out;
+		
+		> header {
+			display: unset;
+		}
+	}
+	
+	&.navbar-fixed {
+		display: block !important;
+	}
+	
+	.navbar {
+		padding: 0;
+		height: 70px;
+		position: sticky;
+		top: 0;
+		z-index: 10;
+	}
+	
+	.page-heading h3, .page-heading .h3 {
+		font-weight: bold;
+	}
+}
+
+table td{
+	@include media-breakpoint-down(md) {
+		white-space:nowrap;
+	}
+	
+	&:last-child {
+		width: 100px;
+	}
+	
+	&:first-child {
+		width: 30px;
+	}
+}
+
+table th{
+	@include media-breakpoint-down(md) {
+		white-space:nowrap;
+	}
+}
